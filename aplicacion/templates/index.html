@@ -1,0 +1,28 @@
+<html>
+<head><title>Calculo matriz</title></head>
+<body>
+<h2>Resolucion de un sistema con m ecuaciones lineales y n incognitas escrito como:</h2>
+<img src="http://upload.wikimedia.org/math/0/3/d/03d6880b95b1cdd877c18a676ffb1739.png" border="0"></a>
+<h2>Separando los coeficientes en notacion matricial:</h2>
+<img src="http://upload.wikimedia.org/math/3/c/e/3cebfd7fac01b208d18a8fe56d6e1fea.png" border="0"></a>
+<h2> Matriz A </h2>
+<ol>
+    {% for numero in matriza %}
+    Fila numero :    <li>{{numero}}</li>
+    {% endfor %}
+</ol>
+<h2> Matriz B </h2>
+<ul>
+    {% for numero in matrizb %}
+        <li>{{numero}}</li>
+    {% endfor %}
+</ul>
+
+<h3>Solución del sistema de ecuaciones:</h3>
+<ul>
+     {% for numero in resultado %}
+        <li>{{numero}}</li>
+     {% endfor %}
+</ul>
+</body>
+</html>
