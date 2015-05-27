@@ -27,10 +27,17 @@ def index(request):
     b = np.array(b1)
     x = np.linalg.solve(a,b)
     resultado = x.tolist()
+    return render_to_response('index.html', {'matriza':a,'matrizb':b,'resultado': resultado})
 
+def matriz(request):
+
+    if 'q' in request.GET and request.GET['q']:
+        mensaje = 'vamos bien, dato enviado: %r' % request.GET['q']
+    else:
+        mensaje = 'vamos mal'
+    return HttpResponse(mensaje)
 
 #    template = loader.get_template('calculo/index.html')
-    return render_to_response('index.html', {'matriza':a,'matrizb':b,'resultado': resultado})
 #    return HttpResponse(template.render())
 #    html = get_template('index.html')
 #    return HttpResponse(html)
