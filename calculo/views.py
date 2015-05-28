@@ -31,8 +31,8 @@ def index(request):
 
 def matriz(request):
 
-    if 'q' in request.GET and request.GET['q']:
-        mensaje = 'vamos bien, dato enviado: %r' % request.GET['q']
+    if 'fila' in request.GET and request.GET['fila']:
+        mensaje = 'vamos bien, dato enviado: %r' % request.GET['fila']
     else:
         mensaje = 'vamos mal'
     return HttpResponse(mensaje)
