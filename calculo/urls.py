@@ -4,5 +4,5 @@ from calculo import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^matriz/$', 'calculo.views.matriz', name='matriz'),
+    url(r'^matriz/$', views.matriz, name='matriz'),
 )
