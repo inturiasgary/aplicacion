@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="/calculo/calcular/" method="post">{% csrf_token %}
+        {% for e in elementos %}
+        <ul>
+            <li>    
+                Elemento {{ forloop.counter }}
+                <select id="" name="elemento{{ forloop.counter}}i">
+                    {% for n in nodos %}
+                    <option value="{{n}}">{{n}}</option>
+                    {% endfor %}
+                </select>
+                <select id="" name="elemento{{ forloop.counter}}f">
+                    {% for n in nodos %}
+                    <option value="{{n}}">{{n}}</option>
+                    {%endfor %}
+                </select></br>
+                Base [metros]: <input type="text" name="elemento{{ forloop.counter}}b"></br>
+                Altura [metros]: <input type="text" name="elemento{{ forloop.counter}}h"></br>
+                E [metros]: <input type="text" name="elemento{{ forloop.counter}}e"></br>
+                Longitud [metros]: <input type="text" name="elemento{{ forloop.counter}}l"></br>
+                Grado inclinacion[sexagesimal]: <input type="text" name="elemento{{ forloop.counter}}g">
+            </li>
+        </ul>    
+        {% endfor %}
+                <input type="hidden" name="cantidadElementos" value={{ cantidadElementos }}>
+                <input type="hidden" name="cantidadNodos" value={{ cantidadNodos }}>
+    <input type="submit" value="aceptar">
+    </form>
+</body>
+</html>

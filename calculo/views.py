@@ -31,12 +31,29 @@ def index(request):
 
 def matriz(request):
 
-    if 'fila' in request.GET and request.GET['fila']:
-        mensaje = 'vamos bien, dato enviado: %d' % int(request.GET['fila'])
+    if 'elementos' in request.GET and request.GET['elementos']:
+        elementos = request.GET['elementos']
+        nodos   = request.GET['nodos']
+        #mensaje = 'vamos bien, dato enviado: %d' % int(request.GET['elementos'])
+        return render_to_response('elementos.html', {'cantidadElementos':int(elementos), "cantidadNodos":int(nodos),
+            'elementos':range(int(elementos)), 'nodos':range(int(nodos)+1)}, context_instance=RequestContext(request))
     else:
         mensaje = 'vamos mal'
     return HttpResponse(mensaje)
 
+def calcular(request):
+    if request.method == 'POST':
+        elementos = int(request.POST['cantidadElementos'])
+        listaElementos = []
+        for e in range(elementos):
+            listaElementos.append([request.POST['elemento'+str(e+1)+'b'], request.POST['elemento'+str(e+1)+'h'], request.POST['elemento'+str(e+1)+'e'], request.POST['elemento'+str(e+1)+'l'], request.POST['elemento'+str(e+1)+'g']])
+        for key in request.POST:
+            value = request.POST[key]
+            # loop through keys and values
+            print key, value
+        print listaElementos
+        print listaElementos[0]
+        return render_to_response('index.html',locals(), context_instance=RequestContext(request))
 #    template = loader.get_template('calculo/index.html')
 #    return HttpResponse(template.render())
 #    html = get_template('index.html')
