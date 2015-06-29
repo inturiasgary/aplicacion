@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="/calculo/calcular/" method="post">{% csrf_token %}
+    Base [mm.]: <input type="text" name="base"><br>
+    Altura [mm.]: <input type="text" name="alura"><br>
+    Longitud [mm.]: <input type="text" name="longitud"><br>
+    Seleccione Material:<br>
+    <select>
+    {% for m in materiales %}
+                    <option value="{{forloop.counter}}">{{ forlop.counter }}" "{{m}}</option>
+    {%endfor %}
+    </select>
+        <ul>
+                <input type="radio" name="geometria" value="redondo" checked> Redondo<br>
+                <input type="radio" name="geometria" value="cuadrado"> Cuadrado<br>
+                <input type="radio" name="geometria" value="hexagono"> Hexagono<br>
+        </ul>
+    <input type="submit" value="aceptar">
+    </form>
+</body>
+</html>

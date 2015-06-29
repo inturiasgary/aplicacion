@@ -1,0 +1,49 @@
+<html>
+<head><title>Calculo matriz</title></head>
+<body>
+<form action="/calculo/matriz/" method="get">
+
+<h3>Matriz de rigidez de cada elemento</h3>
+<ol>
+     {% for matriz in matrices_de_rigidez %}
+     k{{ forloop.counter }}=</br>
+         {% for m in matriz %}
+            {{m}}</br>
+        {% endfor %}</br>
+     {% endfor %}
+</ol>
+
+<h3>Matriz global de la estructura</h3>
+<ol>
+     {% for matriz in matriz_de_ceros %}
+        {{matriz}}</br>
+     {% endfor %}
+</ol>
+
+<h3>Matriz de compatibilidad</h3>
+<ol>
+     {% for matriz in matriz_de_compatibilidad %}
+        {{matriz}}</br>
+     {% endfor %}
+</ol>
+
+<h3>Matriz rigidez ensamblada</h3>
+
+     {% for numero in resultado %}
+        Fila:{{ forloop.counter }}</br> {{numero}}</br></br>
+     {% endfor %}
+
+
+
+
+<h3>Seleccione para eliminar filas a criterio</h3>
+    {% for e in longitudMatriz %}
+                    <input type="checkbox" name="fila{{ forloop.counter }}" value="{{ forloop.counter }}"> Fila {{ forloop.counter }}<br>
+    {% endfor %}
+<h3>Seleccione para eliminar columnas a criterio</h3>
+    {% for e in longitudMatriz %}
+                    <input type="checkbox" name="columna{{ forloop.counter }}" value="{{ forloop.counter }}"> Columna {{ forloop.counter }}<br>
+    {% endfor %}
+    <input type="submit" value="aceptar">
+</body>
+</html>
