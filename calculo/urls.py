@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^matriz/$', views.matriz, name='matriz'),
     url(r'^calcular/$', views.calcular, name='calcular'),
+    url(r'^peso/$', views.peso, name='peso'),
 )

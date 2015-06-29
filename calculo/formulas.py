@@ -3,13 +3,14 @@ from math import cos, sin, radians
 
 #datos prueba
 b = 0.2
-h= 0.6
-e=2.1e6
-a=b*h
-l=5.0
-i=b*(h**3.0)/12.0
+h = 0.6
+e = 2.1e6
+a = b * h
+l = 5.0
+i = b * (h ** 3.0) / 12.0
 
-def matriz_rigidez(e=0.0,a=0.0,l=0.0,i=0.0):
+
+def matriz_rigidez(e=0.0, a=0.0, l=0.0, i=0.0):
     return np.matrix([
         [e*a/l, 0.0, 0.0, -e*a/l, 0, 0],
         [0.0, 12*e*i/l**3, 6*e*i/l**2, 0, -12*e*i/l**3, 6*e*i/l**2],
@@ -50,9 +51,9 @@ r = matriz_rotacion(90)
 t = np.transpose(r)
 #k = np.multiply(k,r)
 #k = np.multiply(k,t)
-k = r*k*t
+k = r * k * t
 print "mrmrmrmrmrmrmmrmrmrmrmrmrmr"
-print matriz_rigidez(e,a,l,i)
+print matriz_rigidez(e, a, l, i)
 print "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
 print r
 print "tttttttttttttttttttttttttttttttttttttt"

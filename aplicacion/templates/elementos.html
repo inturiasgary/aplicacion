@@ -5,10 +5,11 @@
     <title></title>
 </head>
 <body>
+<h2>Introducir datos para cada elemento:</h2>
 <form action="/calculo/calcular/" method="post">{% csrf_token %}
         {% for e in elementos %}
         <ul>
-            <li>    
+            <li>
                 Elemento {{ forloop.counter }}
                 <select id="" name="elemento{{ forloop.counter}}i">
                     {% for n in nodos %}
@@ -20,13 +21,17 @@
                     <option value="{{n}}">{{n}}</option>
                     {%endfor %}
                 </select></br>
-                Base [metros]: <input type="text" name="elemento{{ forloop.counter}}b"></br>
-                Altura [metros]: <input type="text" name="elemento{{ forloop.counter}}h"></br>
-                E [metros]: <input type="text" name="elemento{{ forloop.counter}}e"></br>
-                Longitud [metros]: <input type="text" name="elemento{{ forloop.counter}}l"></br>
-                Grado inclinacion[sexagesimal]: <input type="text" name="elemento{{ forloop.counter}}g">
+                Base [metros]: <input type="text" name="elemento{{ forloop.counter}}b" value="0.0"><br>
+                Altura [metros]: <input type="text" name="elemento{{ forloop.counter}}h" value="0.0"><br>
+                E [Tn/metros2]: <input type="text" name="elemento{{ forloop.counter}}e" value="0.0"><br>
+                Longitud [metros]: <input type="text" name="elemento{{ forloop.counter}}l" value="0.0"><br>
+                Grado inclinacion[sexagesimal]: <input type="text" name="elemento{{ forloop.counter}}g" value="0.0"><br>
+                <input type="radio" name="condicionRigidez{{forloop.counter}}" value="ee" checked> Empotrado-Empotrado<br>
+                <input type="radio" name="condicionRigidez{{forloop.counter}}" value="ea"> Empotrado-Articulado<br>
+                <input type="radio" name="condicionRigidez{{forloop.counter}}" value="ae"> Articulado-Empotrado<br>
+                <input type="radio" name="condicionRigidez{{forloop.counter}}" value="aa"> Articulado-Articulado<br>
             </li>
-        </ul>    
+        </ul>
         {% endfor %}
                 <input type="hidden" name="cantidadElementos" value={{ cantidadElementos }}>
                 <input type="hidden" name="cantidadNodos" value={{ cantidadNodos }}>
